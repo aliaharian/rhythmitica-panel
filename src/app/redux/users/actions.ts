@@ -13,3 +13,9 @@ export const setUsers = (): ThunkAction<void, RootState, unknown, AnyAction> => 
         }
     }
 }
+export const selectUser = (user: userModel): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async (dispatch, getState) => {
+        dispatch(userActions.selectUser(user))
+
+    }
+}
