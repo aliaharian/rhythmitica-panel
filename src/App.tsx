@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from './app/redux/hooks';
 import { selectUser, setUsers } from './app/redux/users/actions';
 import { userModel } from './app/models/redux-models';
 import { Link } from "react-router-dom";
+import { ThemeProvider } from '@emotion/react';
+import theme from './theme/theme';
 
 function App() {
 
@@ -17,27 +19,30 @@ function App() {
     Dispatch(selectUser(user))
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        {
-          selectedUser.id === 0 ?
-            <p>not selected</p>
-            :
-            <>
-              <img src={selectedUser.avatar} />
-              <p>{selectedUser.first_name} {selectedUser.last_name}</p>
-            </>
-        }
-        <button onClick={() => Dispatch(setUsers())}>click</button>
-        <ul>
-          {users.map(user => <li key={user.id} onClick={() => handleSelectUser(user)}>{user.first_name}</li>)}
-        </ul>
-        <p>
-          <Link to="/">home</Link> / <Link to="/about">about</Link> / <Link to="/users">users</Link>
-        </p>
-      </header>
+    <ThemeProvider theme={theme}>
 
-    </div>
+      <div className="App">
+        <header className="App-header">
+          {
+            selectedUser.id === 0 ?
+              <p>not selected</p>
+              :
+              <>
+                <img src={selectedUser.avatar} />
+                <p>{selectedUser.first_name} {selectedUser.last_name}</p>
+              </>
+          }
+          <button onClick={() => Dispatch(setUsers())}>click</button>
+          <ul>
+            {users.map(user => <li key={user.id} onClick={() => handleSelectUser(user)}>{user.first_name}</li>)}
+          </ul>
+          <p>
+            <Link to="/">home</Link> / <Link to="/about">about</Link> / <Link to="/users">users</Link>
+          </p>
+        </header>
+
+      </div>
+    </ThemeProvider>
   );
 }
 
