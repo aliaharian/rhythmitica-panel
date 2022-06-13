@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "robotoL";
+  src: url("/fonts/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "robotoR";
+  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "robotoM";
+  src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "robotoB";
+  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "robotoBlack";
+  src: url("/fonts/Roboto-Black.ttf") format("truetype");
+}
+
+input {
+  font-family: "robotoR";
+  font-size: 14px;
+}

@@ -1,7 +1,8 @@
 const en = {
-    'processing order': 'Processing order',
-}
+  app: {
+    "processing order": "processing order",
+    "app name": "rhyrhmitica",
+  },
+};
 
-export {
-    en
-}
+export { en };

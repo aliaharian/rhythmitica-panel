@@ -1,0 +1,9 @@
+@import "../global.scss";
+
+.footer {
+  height: 56px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  background-color: var(--white-color);
+  border-radius: 10px 10px 0 0;
+}

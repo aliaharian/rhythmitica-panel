@@ -1,5 +1,8 @@
 const fa = {
-    'processing order': 'در حال پردازش سفارش',
+    app:{
+            'processing order': 'در حال پردازش سفارش',
+            'app name': 'ریتمیتیکا'
+    }
 }
 
 export {

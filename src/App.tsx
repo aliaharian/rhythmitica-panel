@@ -10,10 +10,8 @@ function App() {
   const [themeScheme, setThemeScheme] = useLocalStorage<string>('rhythmitica-app-theme', 'dark');
   return (
     <ThemeProvider theme={theme}>
-
       <div className={styles.App} data-theme={themeScheme}>
         <Router setThemeScheme={setThemeScheme} />
-
       </div>
     </ThemeProvider>
   );

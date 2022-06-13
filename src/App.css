@@ -1,23 +1,12 @@
 :root {
-  --background: white;
-  --text-primary: black;
-  --text-secondary: royalblue;
-  --accent: purple;
-  --link-color: green
+  --main-bg-color: #ebebeb;
+  --white-color: #fff;
+  --font-medium: 'robotoM';
+  --divider-color: #ebebeb;
 }
 
-[data-theme='dark'] {
-  --background: black;
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
-  --link-color: green
-}
+[data-theme="dark"] {
+  --main-bg-color: #ebebeb;
+  --white-color: #fff;
 
-[data-theme='blue'] {
-  --background: rgb(118, 150, 255);
-  --text-primary: rgb(54, 54, 54);
-  --text-secondary: grey;
-  --accent: darkred;
-  --link-color: #fff;
 }
