@@ -3,7 +3,7 @@ import styles from "../../assets/scss/organisms/footer.module.scss";
 
 const Footer = () => {
   return <div className={styles.footer}>
-    <Typography>Copyright © 2020 Rhythmitica</Typography>
+    <Typography className={styles.copyright}>Copyright © 2020 Rhythmitica</Typography>
   </div>;
 };
 

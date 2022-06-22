@@ -6,4 +6,22 @@
   margin: 0 auto;
   background-color: var(--white-color);
   border-radius: 10px 10px 0 0;
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+  & .copyright {
+    font-size: 14px;
+    color: var(--footer-text-color);
+    display: flex;
+    align-items: center;
+    &:before {
+      background-color: var(--footer-text-color);
+      width:6px;
+      height:6px;
+      content: "";
+      border-radius: 50%;
+      display: inline-block;
+      margin-right:5px;
+    }
+  }
 }

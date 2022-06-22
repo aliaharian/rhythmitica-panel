@@ -1,14 +1,12 @@
 import About from "./About";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/pages/Home";
-import React, { Dispatch, FC, Suspense } from "react";
+import React, { Suspense } from "react";
+import { routerProps } from "./app/models/router";
 
 const MainLayout = React.lazy(
   () => import("./components/templates/MainLayout")
 );
-interface routerProps {
-  setThemeScheme: Dispatch<string>;
-}
 
 const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
   return (
