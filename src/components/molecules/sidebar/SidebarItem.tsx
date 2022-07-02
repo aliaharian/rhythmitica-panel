@@ -1,9 +1,8 @@
 import { Typography } from "@mui/material";
-import styles from "../../assets/scss/molecules/sidebarItem.module.scss";
+import styles from "../../../assets/scss/molecules/sidebarItem.module.scss";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import { style } from "@mui/system";
-import { menuItem } from "../../app/models/menu";
+import { menuItem } from "../../../app/models/menu";
 import React, { useEffect, useState } from "react";
 
 const SidebarItem = ({

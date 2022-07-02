@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../organisms/Footer";
-import Header from "../organisms/Header";
-import Sidebar from "../organisms/Sidebar";
+import Footer from "../organisms/mainLayout/Footer";
+import Header from "../organisms/mainLayout/Header";
+import Sidebar from "../organisms/mainLayout/Sidebar";
 import styles from "../../assets/scss/templates/mainLayout.module.scss";
 
 

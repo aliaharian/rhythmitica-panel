@@ -18,6 +18,9 @@ const en = {
     reports: "reports",
     coupons: "coupons",
   },
+  header:{
+    "local time": "Local Time",
+  }
 };
 
 export { en };

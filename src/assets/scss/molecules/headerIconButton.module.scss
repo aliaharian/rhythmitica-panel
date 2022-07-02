@@ -1,0 +1,18 @@
+@import "../global.scss";
+
+.iconButton{
+    width:38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    background-color: var(--light-main-color) !important;
+    color: var(--dark-main-color) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right:22px !important;
+    & .icon{
+        color:var(--dark-main-color)
+    }
+}

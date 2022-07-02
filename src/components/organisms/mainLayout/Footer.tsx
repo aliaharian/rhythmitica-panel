@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import styles from "../../assets/scss/organisms/footer.module.scss";
+import styles from "../../../assets/scss/organisms/footer.module.scss";
 
 const Footer = () => {
   return <div className={styles.footer}>

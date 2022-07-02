@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { menuItem, menuItemChild } from "../../app/models/menu";
-import styles from "../../assets/scss/organisms/sidebar.module.scss";
-import SidebarItem from "../molecules/SidebarItem";
+import { menuItem, menuItemChild } from "../../../app/models/menu";
+import styles from "../../../assets/scss/organisms/sidebar.module.scss";
+import SidebarItem from "../../molecules/sidebar/SidebarItem";
 
 const Sidebar = () => {
   const { t, i18n } = useTranslation();
@@ -24,10 +24,10 @@ const Sidebar = () => {
       link: "/privateLessons",
       icon: "person",
       children: [
-        { title: t("Private lessons list"), link: "/about" },
-        { title: t("reserves list"), link: "/about" },
-        { title: t("box"), link: "/about" },
-        { title: t("category"), link: "/about" },
+        { title: t("menu.Private lessons list"), link: "/about" },
+        { title: t("menu.reserves list"), link: "/about" },
+        { title: t("menu.box"), link: "/about" },
+        { title: t("menu.category"), link: "/about" },
       ],
     },
     {
