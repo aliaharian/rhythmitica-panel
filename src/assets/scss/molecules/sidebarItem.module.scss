@@ -1,5 +1,6 @@
 @import "../global.scss";
 
+
 .sidebarItem {
   width: 100%;
   display: block;
@@ -63,7 +64,7 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 40px;
-    border-bottom: 1px solid var(--divider-color);
+    border-bottom: 1px solid var(--main-bg-color);
     &:last-child {
       border-bottom: none;
     }
@@ -89,6 +90,15 @@
         &:before {
           background-color: var(--dark-main-color);
         }
+      }
+    }
+  }
+  & .childSelected {
+    & > p {
+      color: var(--dark-main-color);
+
+      &:before {
+        background-color: var(--dark-main-color);
       }
     }
   }

@@ -31,10 +31,17 @@ const Home = ({ setThemeScheme }: homeProps) => {
       <button onClick={() => Dispatch(setUsers())}>click</button>
       <button
         onClick={() => {
-          setThemeScheme("dark");
+          setThemeScheme("green");
         }}
       >
-        dark Theme
+        green Theme
+      </button>
+      <button
+        onClick={() => {
+          setThemeScheme("orange");
+        }}
+      >
+        orange Theme
       </button>
       <button
         onClick={() => {
@@ -46,10 +53,10 @@ const Home = ({ setThemeScheme }: homeProps) => {
 
       <button
         onClick={() => {
-          setThemeScheme("blue");
+          setThemeScheme("pink");
         }}
       >
-        blue Theme
+        pink Theme
       </button>
       <ul>
         {users.map((user) => (

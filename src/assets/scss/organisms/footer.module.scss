@@ -11,11 +11,11 @@
   align-items: center;
   & .copyright {
     font-size: 14px;
-    color: var(--footer-text-color);
+    color: var(--secondary-text-color);
     display: flex;
     align-items: center;
     &:before {
-      background-color: var(--footer-text-color);
+      background-color: var(--secondary-text-color);
       width:6px;
       height:6px;
       content: "";

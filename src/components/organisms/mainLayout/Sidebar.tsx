@@ -10,14 +10,22 @@ const Sidebar = () => {
   const [menus, setMenus] = useState<menuItem[]>([
     {
       title: t("menu.dashboard"),
-      link: "/",
+      link: "/dashboard",
       icon: "space_dashboard",
-      selected: true,
     },
     {
       title: t("menu.profile"),
       link: "/profile",
       icon: "account_circle",
+    },
+    {
+      title: t("menu.users"),
+      link: "/users",
+      icon: "assignment_ind",
+      children: [
+        { title: t("menu.users list"), link: "/users/list" },
+        { title: t("menu.users roles"), link: "/users/roles" },
+      ],
     },
     {
       title: t("menu.private lessons"),
@@ -46,11 +54,6 @@ const Sidebar = () => {
         { title: t("category"), link: "/about" },
       ],
     },
-    {
-      title: t("menu.users"),
-      link: "/users",
-      icon: "assignment_ind",
-    },
   ]);
 
   const handleToggleOpenSubmenu = (menu: menuItem) => {
@@ -67,6 +70,14 @@ const Sidebar = () => {
     }
     setMenus([...tmp]);
   };
+  const handleCloseSubmenu = (menu: menuItem) => {
+    let tmp = [...menus];
+    //close all menus
+    tmp.forEach((item) => {
+      item.isOpen = false;
+    });
+    setMenus([...tmp]);
+  };
   return (
     <div className={styles.sidebar}>
       <div className={styles.logoContainer}>
@@ -79,10 +90,10 @@ const Sidebar = () => {
             title={menu.title}
             link={menu.link}
             icon={menu.icon}
-            selected={menu.selected}
             children={menu.children}
             isOpen={menu.isOpen}
             setIsOpen={() => handleToggleOpenSubmenu(menu)}
+            handleCloseMenu={() => handleCloseSubmenu(menu)}
           />
         ))}
       </div>

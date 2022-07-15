@@ -1,7 +1,7 @@
 const en = {
   app: {
     "processing order": "processing order",
-    "app name": "rhyrhmitica",
+    "app name": "rhythmitica",
   },
   menu: {
     dashboard: "dashboard",
@@ -9,8 +9,10 @@ const en = {
     blog: "blog",
     users: "users",
     "private lessons": "Private lessons",
-    "private lessons list": "Private lessons list",
+    "Private lessons list": "Private lessons list",
     "reserves list": "Reserves list",
+    "users list":"Users List",
+    "users roles":"Users Roles",
     box: "box",
     category: "category",
     events: "events",
