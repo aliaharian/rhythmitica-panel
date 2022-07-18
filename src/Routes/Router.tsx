@@ -1,16 +1,19 @@
-import About from "./About";
-import { Routes, Route, Link, Navigate, Outlet } from "react-router-dom";
-import Home from "./components/pages/Home";
+import About from "../About";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Home from "../components/pages/Home";
 import React, { Suspense } from "react";
-import { routerProps } from "./app/models/router";
-import UsersList from "./components/pages/users/UsersList";
+import { routerProps } from "../app/models/router";
+import UsersList from "../components/pages/users/UsersList";
+import {
+  MiddlewareRoute,
+  PrivateRoute,
+  PublicRoute,
+} from "../app/utils/routeUtils";
 
 const MainLayout = React.lazy(
-  () => import("./components/templates/MainLayout")
+  () => import("../components/templates/MainLayout")
 );
-const Login = React.lazy(
-  () => import("./components/pages/auth/Login")
-);
+const Login = React.lazy(() => import("../components/pages/auth/Login"));
 
 const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
   return (
@@ -18,7 +21,10 @@ const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route element={<MainLayout />}>
-            <Route path="/users">
+            <Route
+              path="/users"
+              element={<MiddlewareRoute permission="user-manage" />}
+            >
               <Route path="list" element={<UsersList />} />
               <Route path="create" element={<About />} />
             </Route>
@@ -43,23 +49,3 @@ const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
 };
 
 export default Router;
-
-export const PrivateRoute = () => {
-  const token = localStorage.getItem(process.env.REACT_APP_AUTH_STORAGE || "");
-  console.log("ok!", token);
-  if (token) {
-    return <Outlet />;
-  } else {
-    return <Navigate to="/auth/login" />;
-  }
-};
-
-export const PublicRoute = () => {
-  const token = localStorage.getItem(process.env.REACT_APP_AUTH_STORAGE || "");
-  console.log("ok!", token);
-  if (!token) {
-    return <Outlet />;
-  } else {
-    return <Navigate to="/dashboard" />;
-  }
-};

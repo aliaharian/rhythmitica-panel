@@ -1,0 +1,21 @@
+@import "../global.scss";
+
+.tableContainer{
+    width:100%;
+    & .table{
+        width:100%;
+        &>thead{
+            display: flex;
+            &>th{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-direction: row;
+                text-transform: uppercase;
+                color:var(--icon-color);
+                font-family: var(--font-medium);
+                font-size: 14px;
+            }
+        }
+    }
+}

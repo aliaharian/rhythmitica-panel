@@ -1,27 +1,39 @@
 import axios from "axios";
+import { setApiLoading } from "../redux/app/actions";
+import store from "../redux/store";
 import SnackbarUtils from "../utils/SnackbarUtils";
 
 const Api = () => {
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      site: process.env.REACT_APP_SITE_CODE || "",
-    },
+    headers: localStorage.getItem(process.env.REACT_APP_AUTH_STORAGE || "")
+      ? {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          site: process.env.REACT_APP_SITE_CODE || "",
+          authorization:
+            "Bearer " +
+            localStorage.getItem(process.env.REACT_APP_AUTH_STORAGE || ""),
+        }
+      : {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          site: process.env.REACT_APP_SITE_CODE || "",
+        },
   });
 
   instance.interceptors.request.use(
     function (config) {
-      console.log("req sent");
-
       // Do something before request is sent
+
+      console.log("req sent");
+      store.dispatch(setApiLoading(true));
       return config;
     },
     function (error) {
-      console.log("sdvdsvdvsd");
-
       // Do something with request error
+
+      store.dispatch(setApiLoading(false));
       return Promise.reject(error);
     }
   );
@@ -29,16 +41,16 @@ const Api = () => {
   // Add a response interceptor
   instance.interceptors.response.use(
     function (response) {
-      console.log("sdvdsvdvsd");
-      // Do something with response data
+      store.dispatch(setApiLoading(false));
       return response;
     },
     function (error) {
-      SnackbarUtils.error(error.response.data.message)
-
       // Do something with response error
-      console.log("sdvdsvddsvd", error);
-      
+
+      SnackbarUtils.error(
+        error.response.data.message || error.response.data.msg
+      );
+      store.dispatch(setApiLoading(false));
       return Promise.reject(error);
     }
   );

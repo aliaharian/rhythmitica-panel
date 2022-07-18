@@ -5,16 +5,7 @@ import ListHeader from "../organisms/listLayout/ListHeader";
 
 const ListLayout = ({
   children,
-  title,
-  searchPlaceholder,
 }: listLayoutProps) => {
-  return (
-    <div className={styles.listLayout}>
-      <div className={styles.header}>
-        <ListHeader searchPlaceholder={searchPlaceholder} />
-      </div>
-      <div className={styles.tableContainer}>{children}</div>
-    </div>
-  );
+  return <div className={styles.listLayout}>{children}</div>;
 };
 export default ListLayout;

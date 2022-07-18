@@ -3,6 +3,27 @@ const en = {
     "processing order": "processing order",
     "app name": "rhythmitica",
   },
+  form: {
+    all: "all",
+  },
+  list: {
+    role: "role",
+    status: "status",
+    country:'country',
+    "items selected": "Delete ({{number}}) items"
+
+  },
+  status: {
+    active: "active",
+    "deactive": "deactive",
+  },
+  user:{
+    'user':'user',
+    'role':'role',
+    'country':'country',
+    'status':'status',
+    'joined date':'joined date',
+  },
   menu: {
     dashboard: "dashboard",
     profile: "profile",
@@ -11,8 +32,8 @@ const en = {
     "private lessons": "Private lessons",
     "Private lessons list": "Private lessons list",
     "reserves list": "Reserves list",
-    "users list":"Users List",
-    "users roles":"Users Roles",
+    "users list": "Users List",
+    "users roles": "Users Roles",
     box: "box",
     category: "category",
     events: "events",
@@ -20,9 +41,9 @@ const en = {
     reports: "reports",
     coupons: "coupons",
   },
-  header:{
+  header: {
     "local time": "Local Time",
-  }
+  },
 };
 
 export { en };

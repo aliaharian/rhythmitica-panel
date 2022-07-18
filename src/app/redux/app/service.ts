@@ -6,18 +6,14 @@ async function getAllUsers() {
   return response?.data.data;
 }
 async function login(credentials: LoginFormInitialValues) {
-  let response = await Api()?.post("/auth/login", {
-    email: credentials.email,
-    password: credentials.password,
-  });
-  return response?.data;
-}
-async function getRolesList() {
-  let response = await Api()?.get("/admin/roles");
-  return response?.data;
+    let response = await Api()?.post("/auth/login", {
+      email: credentials.email,
+      password: credentials.password,
+    });
+    return response?.data;
+ 
 }
 export default {
   getAllUsers,
   login,
-  getRolesList
 };

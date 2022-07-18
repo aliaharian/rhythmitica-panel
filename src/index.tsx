@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./app/redux/store";
-import Router from "./Router";
+import Router from "./Routes/Router";
 import "./i18n";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
@@ -18,7 +18,6 @@ root.render(
     <BrowserRouter>
       <SnackbarProvider maxSnack={3}>
         <SnackbarUtilsConfigurator />
-
         <App />
       </SnackbarProvider>
     </BrowserRouter>

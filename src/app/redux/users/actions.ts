@@ -4,37 +4,46 @@ import userService from "./service";
 import { RootState } from "../store";
 import userSlice from "./slice";
 import { LoginFormInitialValues } from "../../models/auth";
+import SnackbarUtils from "../../utils/SnackbarUtils";
 
 const userActions = userSlice.actions;
-export const setUsers = (): ThunkAction<
+
+export const login = (
+  credentials: LoginFormInitialValues
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch, getState) => {
+    const response = await userService.login(credentials);
+    SnackbarUtils.success("logged in successfully");
+    localStorage.setItem(
+      process.env.REACT_APP_AUTH_STORAGE || "",
+      JSON.stringify(response.data.token).replaceAll("\"", "")
+    );
+    dispatch(userActions.setUserInfo(response.data.user));
+    localStorage.setItem(
+      process.env.REACT_APP_USER_STORAGE || "",
+      JSON.stringify(response.data.user)
+    );
+    window.location.reload();
+    console.log(response);
+  };
+};
+
+export const setUserInfo = (
+  userInfo: userModel
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch, getState) => {
+    dispatch(userActions.setUserInfo(userInfo));
+  };
+};
+
+export const getRolesList = (): ThunkAction<
   void,
   RootState,
   unknown,
   AnyAction
 > => {
   return async (dispatch, getState) => {
-    if (getState().users.all_users.length === 0) {
-      const response: userModel[] = await userService.getAllUsers();
-      dispatch(userActions.setUsers(response));
-    }
-  };
-};
-export const selectUser = (
-  user: userModel
-): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch, getState) => {
-    dispatch(userActions.selectUser(user));
-  };
-};
-export const login = (
-  credentials: LoginFormInitialValues
-): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch, getState) => {
-    const response = await userService.login(credentials);
-    localStorage.setItem(
-      process.env.REACT_APP_AUTH_STORAGE || "",
-      JSON.stringify(response.data.token)
-    );
-    console.log(response);
+    const response = await userService.getRolesList();
+    dispatch(userActions.getRolesList(response.data));
   };
 };
