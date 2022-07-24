@@ -19,3 +19,8 @@ export interface ButtonModel {
   size?: string;
   icon?: string;
 }
+export interface CheckboxModel {
+  label?: string;
+  onClick?: () => void;
+  checked?: boolean;
+}

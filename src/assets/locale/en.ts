@@ -2,6 +2,8 @@ const en = {
   app: {
     "processing order": "processing order",
     "app name": "rhythmitica",
+    delete: "delete",
+    edit: "edit",
   },
   form: {
     all: "all",
@@ -9,20 +11,21 @@ const en = {
   list: {
     role: "role",
     status: "status",
-    country:'country',
-    "items selected": "Delete ({{number}}) items"
-
+    country: "country",
+    "items selected": "Delete ({{number}}) items",
   },
   status: {
     active: "active",
-    "deactive": "deactive",
+    deactive: "deactive",
   },
-  user:{
-    'user':'user',
-    'role':'role',
-    'country':'country',
-    'status':'status',
-    'joined date':'joined date',
+  user: {
+    user: "user",
+    role: "role",
+    country: "country",
+    status: "status",
+    "joined date": "joined date",
+    iran: "iran",
+    admin: "admin",
   },
   menu: {
     dashboard: "dashboard",

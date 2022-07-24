@@ -11,8 +11,10 @@ const ItemInfo = ({ image, title, subtitle }: ItemInfoModel) => {
   return (
     <div className={clsx(styles.itemInfoContainer)}>
       <RhAvatar image={image || false} content={title.substring(0, 1)} />
-      <Typography>{title}</Typography>
-      <Typography>{subtitle}</Typography>
+      <div>
+        <Typography>{title}</Typography>
+        <Typography>{subtitle}</Typography>
+      </div>
     </div>
   );
 };

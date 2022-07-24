@@ -1,8 +1,9 @@
 export interface tableModel {
   thead: tableHeadModel[];
-  tbody: tableBodyModel[];
+  tbody: any[];
   multiSelect?: boolean;
   actions?: tableActionModel[];
+  handleSelectRows?: (selectedRows: number[]) => void;
 }
 
 export interface tableActionModel {
@@ -12,8 +13,14 @@ export interface tableActionModel {
 export interface tableHeadModel {
   label: any;
   width?: string;
+  name: string;
 }
 
-export interface tableBodyModel {
-  label: any;
+export interface tableRowModel {
+  multiSelect?: boolean;
+  thead: tableHeadModel[];
+  tb: any;
+  actions?: tableActionModel[];
+  checked: boolean;
+  setChecked(checked: boolean): void;
 }

@@ -1,3 +1,5 @@
+import { tableActionModel } from "./table";
+
 export interface menuItemChild {
   title: string;
   link?: string;
@@ -13,4 +15,10 @@ export interface menuItem {
   isOpen?: boolean;
   setIsOpen?: () => void;
   handleCloseMenu?: () => void;
+}
+
+export interface PopupMenuModel {
+  items: tableActionModel[];
+  open: boolean;
+  setOpen: (open:boolean) => void;
 }

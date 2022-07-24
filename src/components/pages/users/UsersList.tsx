@@ -22,7 +22,7 @@ const UsersList = () => {
   }, []);
   const [selectedRole, setSelectedRole] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
-  const [selectedRows, setSelectedRows] = useState([]);
+  const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const status = [
     {
       label: t("status.active"),
@@ -40,7 +40,8 @@ const UsersList = () => {
           {t("user.user")}
         </Typography>
       ),
-      width: "369px",
+      width: "36%",
+      name: "user",
     },
     {
       label: (
@@ -48,7 +49,8 @@ const UsersList = () => {
           {t("user.role")}
         </Typography>
       ),
-      width: "134px",
+      width: "12%",
+      name: "role",
     },
     {
       label: (
@@ -56,7 +58,8 @@ const UsersList = () => {
           {t("user.country")}
         </Typography>
       ),
-      width: "130px",
+      width: "13%",
+      name: "country",
     },
     {
       label: (
@@ -64,7 +67,8 @@ const UsersList = () => {
           {t("user.status")}
         </Typography>
       ),
-      width: "145px",
+      width: "13%",
+      name: "status",
     },
     {
       label: (
@@ -72,30 +76,62 @@ const UsersList = () => {
           {t("user.joined date")}
         </Typography>
       ),
-      width: "200px",
+      width: "18%",
+      name: "joinedDate",
     },
   ];
   const tableBody = [
     {
-      label: (
+      id: 1,
+      user: (
         <ItemInfo
-          image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="negar kharkan"
-          subtitle="ali@gmail.com"
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="hooman tootoonchian"
+          subtitle="aliaharian@gmail.com"
         />
       ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <Typography>{t("status.active")}</Typography>,
+      joinedDate: <Typography>05 May 2022 , 9:23 pm</Typography>,
     },
     {
-      label: <Typography>admin</Typography>,
+      id: 2,
+      user: (
+        <ItemInfo
+          image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="sara nasirzadeh"
+          subtitle="sa.nasirzadeh@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <Typography>{t("status.active")}</Typography>,
+      joinedDate: <Typography>10-2-2020</Typography>,
     },
     {
-      label: <Typography>admin</Typography>,
+      id: 3,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <Typography>{t("status.active")}</Typography>,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+  ];
+  const tableActions = [
+    {
+      label: t("app.edit"),
+      onClick: () => console.log("ok!"),
     },
     {
-      label: <Typography>admin</Typography>,
-    },
-    {
-      label: <Typography>admin</Typography>,
+      label: t("app.delete"),
+      onClick: () => console.log("ok!"),
     },
   ];
   const handleChangeRole = (event: SelectChangeEvent) => {
@@ -103,6 +139,9 @@ const UsersList = () => {
   };
   const handleChangeStatus = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value as string);
+  };
+  const handleSelectRows = (items: number[]) => {
+    setSelectedRows([...items]);
   };
   return (
     <ListLayout>
@@ -148,7 +187,12 @@ const UsersList = () => {
         </div>
       </ListHeader>
       <div className={styles.tableContainer}>
-        <Table thead={tableHead} tbody={tableBody} />
+        <Table
+          handleSelectRows={handleSelectRows}
+          thead={tableHead}
+          tbody={tableBody}
+          actions={tableActions}
+        />
       </div>
     </ListLayout>
   );
