@@ -15,6 +15,10 @@ const MainLayout = React.lazy(
 );
 const Login = React.lazy(() => import("../components/pages/auth/Login"));
 
+const CreateBlog = React.lazy(
+  () => import("../components/pages/blog/CreateBlog")
+);
+
 const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
   return (
     <Suspense fallback={<div>loading...</div>}>
@@ -27,6 +31,13 @@ const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
             >
               <Route path="list" element={<UsersList />} />
               <Route path="create" element={<About />} />
+            </Route>
+
+            <Route
+              path="/blog"
+              element={<MiddlewareRoute permission="post-manage" />}
+            >
+              <Route path="create" element={<CreateBlog />} />
             </Route>
 
             <Route

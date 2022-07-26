@@ -1,0 +1,13 @@
+@import "../global.scss";
+
+.addBlogContainer {
+  display: grid;
+  grid-template-columns: 330px calc(100% - 350px);
+  column-gap: 20px;
+}
+.dropzoneContainer {
+  width: 100%;
+}
+.textEditorContainer {
+  background-color: red;
+}

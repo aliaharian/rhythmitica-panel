@@ -42,6 +42,10 @@ const Sidebar = () => {
       title: t("menu.blog"),
       link: "/blog",
       icon: "post_add",
+      children: [
+        { title: t("menu.blog list"), link: "/blog/list" },
+        { title: t("menu.blog category"), link: "/blog/category/list" },
+      ],
     },
     {
       title: t("menu.events"),

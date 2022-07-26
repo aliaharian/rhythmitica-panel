@@ -2,6 +2,14 @@ export interface listLayoutProps {
   children?: any;
 }
 
+export interface innerPageLayoutProps {
+  children?: any;
+  breadcrumb: any[];
+  handleBack?: () => void;
+  handleDelete?: () => void;
+
+}
+
 export interface ListHeaderSearchInput {
   placeholder?: string;
 }

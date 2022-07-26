@@ -37,6 +37,9 @@ const en = {
     "reserves list": "Reserves list",
     "users list": "Users List",
     "users roles": "Users Roles",
+    "blog list": "Blog List",
+    "blog category": "Blog Category",
+
     box: "box",
     category: "category",
     events: "events",

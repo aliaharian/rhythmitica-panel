@@ -10,6 +10,7 @@ import "./i18n";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import { SnackbarUtilsConfigurator } from "./app/utils/SnackbarUtils";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

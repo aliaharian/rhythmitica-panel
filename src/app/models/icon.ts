@@ -6,3 +6,4 @@ export interface HeaderIconButtonProps {
   icon: string;
   onClick?: () => void;
 }
+
