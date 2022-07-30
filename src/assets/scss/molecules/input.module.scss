@@ -1,0 +1,32 @@
+@import "../global.scss";
+.input {
+  width: 100%;
+  // height: 42px;
+  & label {
+    color: var(--secondary-text-color) !important;
+    text-transform: capitalize;
+    font-size: 14px;
+
+  }
+  & div {
+    border-radius: 8px;
+    border-color: var(--dark-main-color);
+    & input {
+      color:var(--main-text-color) !important;
+      font-size: 14px;
+      padding: 9.5px 14px;
+      // height: 42px;
+    }
+  }
+
+  & fieldset {
+    border: 1px solid var(--dark-main-color) !important;
+    & legend {
+      // color: var(--secondary-text-color) !important;
+    }
+  }
+}
+
+.inputInside {
+  // height: 42px;
+}

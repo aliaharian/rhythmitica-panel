@@ -5,9 +5,22 @@
   grid-template-columns: 330px calc(100% - 350px);
   column-gap: 20px;
 }
-.dropzoneContainer {
+.blogInfoContainer {
   width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  .dropzoneContainer {
+    width: 100%;
+  }
 }
 .textEditorContainer {
-  background-color: red;
+  // background-color: red;
+}
+
+.titleContainer {
+  width: 100%;
+
+  margin-top: 21px;
 }

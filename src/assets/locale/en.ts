@@ -14,6 +14,12 @@ const en = {
     country: "country",
     "items selected": "Delete ({{number}}) items",
   },
+  blog: {
+    title: "Title",
+    category: "Category",
+    brief: "Brief",
+    "save as draft": "Save as draft",
+  },
   status: {
     active: "active",
     deactive: "deactive",

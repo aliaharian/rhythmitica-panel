@@ -6,6 +6,7 @@ export interface DropdownModel {
   label: string;
   handleChange?: (event: SelectChangeEvent) => void;
   hasAll?: boolean;
+  formMode?: boolean;
   showLabelInsideInput?: boolean;
 }
 export interface DropdownItem {
@@ -23,4 +24,20 @@ export interface CheckboxModel {
   label?: string;
   onClick?: () => void;
   checked?: boolean;
+}
+
+export interface InputModel {
+  label?: string;
+  className?: string;
+  type?: string;
+  formik?: any;
+  name: string;
+  max?: string;
+  min?: string;
+  numberOnly?: boolean;
+  readOnly?: boolean;
+  placeholder?: string;
+  multiline?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }

@@ -3,6 +3,7 @@ import styles from "../../../assets/scss/molecules/dropdown.module.scss";
 import { DropdownModel } from "../../../app/models/form";
 import { FormControl, Select, MenuItem, InputLabel } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import clsx from "clsx";
 
 const Dropdown = ({
   items,
@@ -11,16 +12,20 @@ const Dropdown = ({
   handleChange,
   hasAll,
   showLabelInsideInput,
+  formMode,
 }: DropdownModel) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.dropdownContainer}>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+    <div
+      className={clsx(styles.dropdownContainer, formMode && styles.formMode)}
+    >
+      <FormControl size="small">
         {!showLabelInsideInput && (
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         )}
         <Select
+          size="small"
           value={value}
           label={!showLabelInsideInput ? label : null}
           onChange={handleChange}
