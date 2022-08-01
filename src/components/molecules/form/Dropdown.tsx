@@ -13,12 +13,13 @@ const Dropdown = ({
   hasAll,
   showLabelInsideInput,
   formMode,
+  buttonMode,
 }: DropdownModel) => {
   const { t } = useTranslation();
 
   return (
     <div
-      className={clsx(styles.dropdownContainer, formMode && styles.formMode)}
+      className={clsx(styles.dropdownContainer, formMode && styles.formMode , buttonMode && styles.buttonMode)}
     >
       <FormControl size="small">
         {!showLabelInsideInput && (
@@ -35,8 +36,29 @@ const Dropdown = ({
               paper: styles.dropdownMenu,
             },
           }}
+          IconComponent={() => {
+            return buttonMode ? (
+              <></>
+            ) : (
+              <svg
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                focusable="false"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                data-testid="ArrowDropDownIcon"
+              >
+                <path d="M7 10l5 5 5-5z"></path>
+              </svg>
+            );
+          }}
           renderValue={(value: any) => {
-            return showLabelInsideInput ? (
+            return buttonMode ? (
+              <>
+                <span className={styles.inputValue}></span>
+                {items?.find((val) => val.value === value)?.label ||
+                  t("form.all")}
+              </>
+            ) : showLabelInsideInput ? (
               <>
                 <span className={styles.inputValue}>{label} :</span>
                 {items?.find((val) => val.value === value)?.label ||

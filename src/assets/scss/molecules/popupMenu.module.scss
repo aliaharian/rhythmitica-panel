@@ -24,3 +24,17 @@
     background-color: var(--light-main-color) !important;
   }
 }
+
+.whiteIcon{
+  & > span {
+    color: var(--white-color) !important;
+  }
+}
+.mainIcon{
+  &:hover {
+    background-color: var(--light-main-color) !important;
+  }
+  & > span {
+    color: var(--dark-main-color) !important;
+  }
+}

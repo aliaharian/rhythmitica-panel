@@ -17,11 +17,13 @@
       height: 100%;
       border-radius: inherit;
       border-color: inherit;
+
       & > div {
         font-size: 16px;
         color: var(--main-text-color);
         text-transform: capitalize;
         padding-left: 12px;
+
         & .inputValue {
           font-size: 14px;
           color: var(--secondary-text-color);
@@ -35,6 +37,28 @@
       border-radius: inherit;
       border-color: inherit !important;
       border-width: 1px !important;
+    }
+  }
+}
+.buttonMode {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  border:none;
+  & fieldset{
+    border:none !important;
+
+  }
+  & > div {
+    & > div {
+      & > div {
+        padding:10px 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .inputValue{
+          margin:0;
+        }
+      }
     }
   }
 }

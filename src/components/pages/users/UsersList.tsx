@@ -11,6 +11,7 @@ import styles from "../../../assets/scss/pages/usersList.module.scss";
 import clsx from "clsx";
 import Table from "../../molecules/table/Table";
 import ItemInfo from "../../molecules/itemInfo/ItemInfo";
+import ListLabel from "@/components/atoms/ListLabel";
 
 const UsersList = () => {
   const rolesList = useAppSelector((state) => state.users.rolesList);
@@ -92,7 +93,7 @@ const UsersList = () => {
       ),
       role: <Typography>{t("user.admin")}</Typography>,
       country: <Typography>{t("user.iran")}</Typography>,
-      status: <Typography>{t("status.active")}</Typography>,
+      status: <ListLabel label={t("status.active")} />,
       joinedDate: <Typography>05 May 2022 , 9:23 pm</Typography>,
     },
     {
@@ -106,7 +107,7 @@ const UsersList = () => {
       ),
       role: <Typography>{t("user.admin")}</Typography>,
       country: <Typography>{t("user.iran")}</Typography>,
-      status: <Typography>{t("status.active")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
       joinedDate: <Typography>10-2-2020</Typography>,
     },
     {
@@ -120,7 +121,105 @@ const UsersList = () => {
       ),
       role: <Typography>{t("user.admin")}</Typography>,
       country: <Typography>{t("user.iran")}</Typography>,
-      status: <Typography>{t("status.active")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 4,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 5,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 6,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 7,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 8,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 9,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
+      joinedDate: <Typography>10-2-2020</Typography>,
+    },
+    {
+      id: 10,
+      user: (
+        <ItemInfo
+          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
+          title="Hooman Tootoonchian"
+          subtitle="h.tootoonchian@gmail.com"
+        />
+      ),
+      role: <Typography>{t("user.admin")}</Typography>,
+      country: <Typography>{t("user.iran")}</Typography>,
+      status: <ListLabel label={t("status.deactive")} color="danger" />,
       joinedDate: <Typography>10-2-2020</Typography>,
     },
   ];

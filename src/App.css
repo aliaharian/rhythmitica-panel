@@ -1,16 +1,19 @@
 :root {
   --font-medium: "robotoM";
-  
+
   --main-bg-color: #ebebeb;
   --white-color: #fff;
-
+  --success-color: #04a777;
+  --danger-color: #d90368;
+  --success-bg-color: #04a7771a;
+  --danger-bg-color: #d903681a;
   --light-main-color: #ede0ea;
   --dark-main-color: #820263;
 
   --main-text-color: #291720;
-  --secondary-text-color:#494b71;
+  --secondary-text-color: #494b71;
 
-  --icon-color: #9899A9;
+  --icon-color: #9899a9;
   --menu-child-bg-color: #f9f9f9;
 
   --menu-button-icon-color: #c4c4c4;
@@ -25,7 +28,6 @@
   --light-main-color: #e6f6f1;
   --dark-main-color: #04a777;
 }
-
 
 [data-theme="orange"] {
   --light-main-color: #ffeede;

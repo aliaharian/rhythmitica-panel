@@ -7,4 +7,5 @@ export interface AvatarModel {
   image?: any;
   content?: string;
   width?: number;
+  bordered?: boolean;
 }

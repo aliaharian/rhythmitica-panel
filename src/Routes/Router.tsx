@@ -19,6 +19,8 @@ const CreateBlog = React.lazy(
   () => import("../components/pages/blog/CreateBlog")
 );
 
+const Profile = React.lazy(() => import("@/components/pages/profile/Profile"));
+
 const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
   return (
     <Suspense fallback={<div>loading...</div>}>
@@ -44,6 +46,7 @@ const Router = ({ setThemeScheme }: routerProps): JSX.Element => {
               path="/dashboard"
               element={<Home setThemeScheme={setThemeScheme} />}
             />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/about" element={<About />} />
           </Route>

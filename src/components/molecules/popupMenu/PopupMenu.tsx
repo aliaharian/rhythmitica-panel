@@ -1,11 +1,12 @@
 import { Button, Menu, MenuItem } from "@mui/material";
+import clsx from "clsx";
 import React from "react";
 import { PopupMenuModel } from "../../../app/models/menu";
 import { tableActionModel } from "../../../app/models/table";
 import styles from "../../../assets/scss/molecules/popupMenu.module.scss";
 import Icon from "../../atoms/Icon";
 
-const PopupMenu = ({ open, setOpen, items }: PopupMenuModel) => {
+const PopupMenu = ({ open, setOpen, items , color }: PopupMenuModel) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClose = () => {
     setOpen(false);
@@ -29,7 +30,7 @@ const PopupMenu = ({ open, setOpen, items }: PopupMenuModel) => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClickButton}
-        className={styles.menuButton}
+        className={clsx(styles.menuButton , color==='white' && styles.whiteIcon, color==='main' && styles.mainIcon)}
       >
         <Icon icon="more_vert" />
       </Button>

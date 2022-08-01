@@ -8,6 +8,8 @@ export interface DropdownModel {
   hasAll?: boolean;
   formMode?: boolean;
   showLabelInsideInput?: boolean;
+  buttonMode?: boolean;
+
 }
 export interface DropdownItem {
   label: string;

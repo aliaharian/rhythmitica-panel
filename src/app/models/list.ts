@@ -32,3 +32,8 @@ export interface ItemInfoModel {
   title: string;
   subtitle: string;
 }
+
+export interface ListLabelModel {
+  label:string;
+  color?:string;
+}
