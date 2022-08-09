@@ -1,6 +1,13 @@
 @import "../global.scss";
 
-.profile{
+.profile {
   border-radius: 10px;
   overflow: hidden;
+}
+.profileBody {
+  background-color: var(--white-color);
+  padding: 0 40px 20px;
+}
+.tabsContainer {
+  margin-top: 64px;
 }

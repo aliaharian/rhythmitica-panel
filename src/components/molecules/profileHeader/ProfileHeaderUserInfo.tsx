@@ -6,7 +6,7 @@ const ProfileHeaderUserInfo = () => {
   return (
     <div className={styles.userInfo}>
       <div className={styles.avatarContainer}>
-        <RhAvatar bordered content="A" width={170} />
+        <RhAvatar image={'https://itica.ca/storage/users/site_7/user_90_1606331160.png'} bordered content="A" width={170} />
       </div>
       <div className={styles.usernameContainer}>
         <Typography>Hooman Tootoonchian</Typography>
