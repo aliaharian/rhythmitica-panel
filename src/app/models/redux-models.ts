@@ -1,3 +1,5 @@
+import { usersResponseModel } from "./user";
+
 export interface userModel {
   address: string;
   avatar: string;
@@ -31,11 +33,17 @@ export interface permissionsModel {
 export interface usersSliceModel {
   userInfo?: userModel;
   rolesList?: roleModel[];
+  countriesList?: countryModel[];
+  usersListResponse?: usersResponseModel;
 }
 export interface appSliceModel {
   apiLoading: boolean;
 }
 
+export interface countryModel {
+  id: number;
+  countryName: string;
+}
 export interface roleModel {
   id: number;
   name: string;

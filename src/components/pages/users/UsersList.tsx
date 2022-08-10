@@ -2,7 +2,11 @@ import { SelectChangeEvent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../app/redux/hooks";
-import { getRolesList } from "../../../app/redux/users/actions";
+import {
+  getCountriesList,
+  getRolesList,
+  getUsersList,
+} from "../../../app/redux/users/actions";
 import Dropdown from "../../molecules/form/Dropdown";
 import ListHeaderSearch from "../../molecules/listHeader/ListHeaderSearch";
 import ListHeader from "../../organisms/listLayout/ListHeader";
@@ -15,14 +19,21 @@ import ListLabel from "@/components/atoms/ListLabel";
 
 const UsersList = () => {
   const rolesList = useAppSelector((state) => state.users.rolesList);
+  const countriesList = useAppSelector((state) => state.users.countriesList);
+  const usersList = useAppSelector((state) => state.users.usersListResponse);
   const Dispatch = useAppDispatch();
   const { t } = useTranslation();
   console.log("roles", rolesList);
   useEffect(() => {
     !rolesList && Dispatch(getRolesList());
+    !countriesList && Dispatch(getCountriesList());
+    !usersList && Dispatch(getUsersList({}));
   }, []);
   const [selectedRole, setSelectedRole] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedCountry, setSelectedCountry] = useState("all");
+  const [usersTable, setUsersTable] = useState<any[]>([]);
+
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const status = [
     {
@@ -81,6 +92,33 @@ const UsersList = () => {
       name: "joinedDate",
     },
   ];
+  useEffect(() => {
+    if (usersList?.data) {
+      let tmp = usersList?.data.map((item: any) => {
+        return {
+          id: 2,
+          user: (
+            <ItemInfo
+              image={item.avatar?process.env.REACT_APP_IMAGE_URL+item.avatar:null}
+              title={`${item.name} ${item.family}`}
+              subtitle={item.email}
+            />
+          ),
+          role: (
+            <Typography>
+              {item.roles?.find(
+                (role: any) => role.site_id === process.env.REACT_APP_SITE_ID
+              )?.name || "student"}
+            </Typography>
+          ),
+          country: <Typography>{t("user.iran")}</Typography>,
+          status: <ListLabel label={t("status.deactive")} color="danger" />,
+          joinedDate: <Typography>10-2-2020</Typography>,
+        };
+      });
+      setUsersTable([...tmp]);
+    }
+  }, [usersList]);
   const tableBody = [
     {
       id: 1,
@@ -239,6 +277,9 @@ const UsersList = () => {
   const handleChangeStatus = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value as string);
   };
+  const handleChangeCountry = (event: SelectChangeEvent) => {
+    setSelectedCountry(event.target.value as string);
+  };
   const handleSelectRows = (items: number[]) => {
     setSelectedRows([...items]);
   };
@@ -276,10 +317,13 @@ const UsersList = () => {
         </div>
         <div className={clsx(styles.dropdownContainer, styles.countryDropdown)}>
           <Dropdown
-            items={status}
+            items={countriesList?.map((country) => ({
+              label: country.countryName,
+              value: country.id.toString(),
+            }))}
             hasAll
-            value={selectedStatus}
-            handleChange={handleChangeStatus}
+            value={selectedCountry}
+            handleChange={handleChangeCountry}
             label={t("list.country")}
             showLabelInsideInput
           />
@@ -289,7 +333,7 @@ const UsersList = () => {
         <Table
           handleSelectRows={handleSelectRows}
           thead={tableHead}
-          tbody={tableBody}
+          tbody={usersTable}
           actions={tableActions}
         />
       </div>

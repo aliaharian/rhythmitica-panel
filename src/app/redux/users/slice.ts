@@ -1,9 +1,17 @@
-import { roleModel, userModel, usersSliceModel } from "../../models/redux-models";
+import {
+  countryModel,
+  roleModel,
+  userModel,
+  usersSliceModel,
+} from "../../models/redux-models";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { usersResponseModel } from "@/app/models/user";
 
 const initialUserState: usersSliceModel = {
   userInfo: undefined,
-  rolesList : undefined
+  rolesList: undefined,
+  countriesList: undefined,
+  usersListResponse: undefined,
 };
 
 const userSlice = createSlice({
@@ -14,8 +22,13 @@ const userSlice = createSlice({
       state.userInfo = action.payload;
     },
     getRolesList: (state, action: PayloadAction<roleModel[]>) => {
-      console.log('action.payload',action.payload)
       state.rolesList = action.payload;
+    },
+    getUsersList: (state, action: PayloadAction<usersResponseModel>) => {
+      state.usersListResponse = action.payload;
+    },
+    getCountriesList: (state, action: PayloadAction<countryModel[]>) => {
+      state.countriesList = action.payload;
     },
   },
 });

@@ -1,4 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
+import { userFilterModel } from "@/app/models/user";
 import { LoginFormInitialValues } from "../../models/auth";
 import Api from "../../service/Api";
 async function getAllUsers() {
@@ -16,8 +17,18 @@ async function getRolesList() {
   let response = await Api()?.get("/admin/roles");
   return response?.data;
 }
+async function getUsersList({ page = 0, role }: userFilterModel) {
+  let response = await Api()?.get(`/admin/users/filter?page=${page}`);
+  return response?.data;
+}
+async function getCountriesList() {
+  let response = await Api()?.get("/admin/countries/countriesList");
+  return response?.data;
+}
 export default {
   getAllUsers,
   login,
-  getRolesList
+  getRolesList,
+  getCountriesList,
+  getUsersList
 };
