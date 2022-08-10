@@ -45,9 +45,10 @@ const Dropdown = ({
                 focusable="false"
                 aria-hidden="true"
                 viewBox="0 0 24 24"
+                width="24px"
                 data-testid="ArrowDropDownIcon"
               >
-                <path d="M7 10l5 5 5-5z"></path>
+                <path d="M7 10l5 5 5-5z" fill="currentColor"></path>
               </svg>
             );
           }}

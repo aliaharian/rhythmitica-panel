@@ -20,6 +20,14 @@ const en = {
     brief: "Brief",
     "save as draft": "Save as draft",
   },
+  profile: {
+    "first name": "First name",
+    "last name": "Last name",
+    gender: "Gender",
+    "birth year": "Birth year",
+    "birth month": "Birth month",
+    "birth day": "Birth day",
+  },
   status: {
     active: "active",
     deactive: "deactive",

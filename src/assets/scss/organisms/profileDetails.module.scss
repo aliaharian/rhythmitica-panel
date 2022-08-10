@@ -1,0 +1,39 @@
+@import "../global.scss";
+
+.personalItemsContainer {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 621px;
+  & > div {
+    margin-bottom: 21px;
+    &:nth-child(1),
+    &:nth-child(2) {
+      max-width: 300px;
+    }
+    &:nth-child(4),
+    &:nth-child(5),
+    &:nth-child(6) {
+      max-width: 193px;
+    }
+  }
+}
+
+.addressItemsContainer {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 621px;
+  & > div {
+    margin-bottom: 21px;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      max-width: 193px;
+    }
+  }
+}

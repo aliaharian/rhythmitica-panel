@@ -6,6 +6,7 @@
     color: var(--secondary-text-color) !important;
     text-transform: capitalize;
     font-size: 14px;
+    top:2px;
 
   }
   & div {
@@ -14,13 +15,21 @@
     & input {
       color:var(--main-text-color) !important;
       font-size: 14px;
-      padding: 9.5px 14px;
+      padding: 11px 14px;
       // height: 42px;
+    }
+  }
+  [class~="Mui-focused"] {
+    & fieldset {
+      border: 1px solid var(--dark-main-color) !important;
+      & legend {
+        // color: var(--secondary-text-color) !important;
+      }
     }
   }
 
   & fieldset {
-    border: 1px solid var(--dark-main-color) !important;
+    border: 1px solid var(--main-bg-color) !important;
     & legend {
       // color: var(--secondary-text-color) !important;
     }

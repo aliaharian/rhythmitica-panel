@@ -17,7 +17,27 @@
       height: 100%;
       border-radius: inherit;
       border-color: inherit;
-
+      & svg {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        fill: currentColor;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 7px;
+        top: calc(50% - 0.5em);
+        pointer-events: none;
+        color: rgba(0, 0, 0, 0.54);
+      }
       & > div {
         font-size: 16px;
         color: var(--main-text-color);
@@ -43,20 +63,19 @@
 .buttonMode {
   background-color: var(--white-color);
   border-radius: 8px;
-  border:none;
-  & fieldset{
-    border:none !important;
-
+  border: none;
+  & fieldset {
+    border: none !important;
   }
   & > div {
     & > div {
       & > div {
-        padding:10px 26px;
+        padding: 10px 26px;
         display: flex;
         align-items: center;
         justify-content: center;
-        & .inputValue{
-          margin:0;
+        & .inputValue {
+          margin: 0;
         }
       }
     }
@@ -65,7 +84,10 @@
 .formMode {
   border-radius: 8px;
   height: 42px;
-  border-color: var(--dark-main-color) !important;
+  [class~="Mui-focused"] {
+    border-color: var(--dark-main-color) !important;
+  }
+  border-color: var(--main-bg-color) !important;
   & label {
     font-size: 14px;
     color: var(--secondary-text-color) !important;

@@ -9,7 +9,6 @@ export interface DropdownModel {
   formMode?: boolean;
   showLabelInsideInput?: boolean;
   buttonMode?: boolean;
-
 }
 export interface DropdownItem {
   label: string;
@@ -26,6 +25,10 @@ export interface CheckboxModel {
   label?: string;
   onClick?: () => void;
   checked?: boolean;
+}
+export interface FromContainerModel {
+  children: React.ReactNode;
+  title: string;
 }
 
 export interface InputModel {
