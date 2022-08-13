@@ -49,12 +49,30 @@ export const getRolesList = (): ThunkAction<
   };
 };
 export const getUsersList = ({
+  search,
   page,
   role,
+  status,
+  country,
 }: userFilterModel): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch, getState) => {
-    const response = await userService.getUsersList({ page, role });
+    const response = await userService.getUsersList({
+      search,
+      page,
+      role,
+      status,
+      country,
+    });
     dispatch(userActions.getUsersList(response.data));
+  };
+};
+
+export const deleteUser = (
+  id: number
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch, getState) => {
+    const response = await userService.deleteUser(id);
+    dispatch(getUsersList({}));
   };
 };
 

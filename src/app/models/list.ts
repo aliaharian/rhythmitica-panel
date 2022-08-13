@@ -7,11 +7,12 @@ export interface innerPageLayoutProps {
   breadcrumb: any[];
   handleBack?: () => void;
   handleDelete?: () => void;
-
 }
 
 export interface ListHeaderSearchInput {
   placeholder?: string;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 export interface DropdownItem {
   label: string;
@@ -34,6 +35,6 @@ export interface ItemInfoModel {
 }
 
 export interface ListLabelModel {
-  label:string;
-  color?:string;
+  label: string;
+  color?: string;
 }

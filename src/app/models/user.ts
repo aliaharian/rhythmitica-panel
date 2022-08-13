@@ -1,6 +1,9 @@
 export interface userFilterModel {
+  search?: string;
   page?: number;
   role?: string;
+  status?: string;
+  country?: string;
 }
 
 export interface userModel {

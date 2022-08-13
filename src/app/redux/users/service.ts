@@ -17,10 +17,24 @@ async function getRolesList() {
   let response = await Api()?.get("/admin/roles");
   return response?.data;
 }
-async function getUsersList({ page = 0, role }: userFilterModel) {
-  let response = await Api()?.get(`/admin/users/filter?page=${page}`);
+async function getUsersList({
+  search = "",
+  page = 1,
+  role = "all",
+  status = "all",
+  country = "all",
+}: userFilterModel) {
+  let response = await Api()?.get(
+    `/admin/users/filter?search=${search}&page=${page}&role=${role}&status=${status}&country=${country}&length=4`
+  );
   return response?.data;
 }
+
+async function deleteUser(id: number) {
+  let response = await Api()?.get(`/admin/users/${id}/delete`);
+  return response?.data;
+}
+
 async function getCountriesList() {
   let response = await Api()?.get("/admin/countries/countriesList");
   return response?.data;
@@ -30,5 +44,6 @@ export default {
   login,
   getRolesList,
   getCountriesList,
-  getUsersList
+  getUsersList,
+  deleteUser,
 };

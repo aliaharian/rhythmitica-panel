@@ -34,7 +34,13 @@ export interface usersSliceModel {
   userInfo?: userModel;
   rolesList?: roleModel[];
   countriesList?: countryModel[];
-  usersListResponse?: usersResponseModel;
+  usersListResponse?: any;
+}
+export interface usersSliceModel {
+  userInfo?: userModel;
+  rolesList?: roleModel[];
+  countriesList?: countryModel[];
+  usersListResponse?: any;
 }
 export interface appSliceModel {
   apiLoading: boolean;

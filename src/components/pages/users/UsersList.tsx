@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../app/redux/hooks";
 import {
+  deleteUser,
   getCountriesList,
   getRolesList,
   getUsersList,
@@ -16,6 +17,9 @@ import clsx from "clsx";
 import Table from "../../molecules/table/Table";
 import ItemInfo from "../../molecules/itemInfo/ItemInfo";
 import ListLabel from "@/components/atoms/ListLabel";
+import { useDebouncedCallback } from "use-debounce";
+import InfiniteScroll from "react-infinite-scroll-component";
+import ConfirmDeleteDialog from "@/components/molecules/dialog/ConfirmDeleteDialog";
 
 const UsersList = () => {
   const rolesList = useAppSelector((state) => state.users.rolesList);
@@ -23,16 +27,33 @@ const UsersList = () => {
   const usersList = useAppSelector((state) => state.users.usersListResponse);
   const Dispatch = useAppDispatch();
   const { t } = useTranslation();
-  console.log("roles", rolesList);
   useEffect(() => {
     !rolesList && Dispatch(getRolesList());
     !countriesList && Dispatch(getCountriesList());
     !usersList && Dispatch(getUsersList({}));
   }, []);
+
+  const debouncedFunction = useDebouncedCallback((e) => {
+    setPage(0);
+    Dispatch(
+      getUsersList({
+        role: selectedRole,
+        search: e.target.value,
+        country: selectedCountry,
+        status: selectedStatus,
+        page: 0,
+      })
+    );
+  }, 500);
+
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [selectedRole, setSelectedRole] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [selectedCountry, setSelectedCountry] = useState("all");
   const [usersTable, setUsersTable] = useState<any[]>([]);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<number[]>([]);
 
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const status = [
@@ -95,11 +116,17 @@ const UsersList = () => {
   useEffect(() => {
     if (usersList?.data) {
       let tmp = usersList?.data.map((item: any) => {
+        let date = Date.parse(item.created_at);
+        let parsed = new Date(date);
         return {
-          id: 2,
+          id: item.id,
           user: (
             <ItemInfo
-              image={item.avatar?process.env.REACT_APP_IMAGE_URL+item.avatar:null}
+              image={
+                item.avatar
+                  ? process.env.REACT_APP_IMAGE_URL + item.avatar
+                  : null
+              }
               title={`${item.name} ${item.family}`}
               subtitle={item.email}
             />
@@ -111,156 +138,28 @@ const UsersList = () => {
               )?.name || "student"}
             </Typography>
           ),
-          country: <Typography>{t("user.iran")}</Typography>,
-          status: <ListLabel label={t("status.deactive")} color="danger" />,
-          joinedDate: <Typography>10-2-2020</Typography>,
+          country: <Typography>{item.timezone}</Typography>,
+          status: (
+            <ListLabel
+              label={item.is_active ? t("status.active") : t("status.deactive")}
+              color={item.is_active ? "success" : "danger"}
+            />
+          ),
+          joinedDate: (
+            <Typography>
+              {parsed.getDate() +
+                "-" +
+                parsed.getMonth() +
+                "-" +
+                parsed.getFullYear()}
+            </Typography>
+          ),
         };
       });
       setUsersTable([...tmp]);
     }
   }, [usersList]);
-  const tableBody = [
-    {
-      id: 1,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="hooman tootoonchian"
-          subtitle="aliaharian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.active")} />,
-      joinedDate: <Typography>05 May 2022 , 9:23 pm</Typography>,
-    },
-    {
-      id: 2,
-      user: (
-        <ItemInfo
-          image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="sara nasirzadeh"
-          subtitle="sa.nasirzadeh@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 3,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 4,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 5,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 6,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 7,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 8,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 9,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-    {
-      id: 10,
-      user: (
-        <ItemInfo
-          // image={"https://itica.ca/storage/users/site_7/user_90_1606331160.png"}
-          title="Hooman Tootoonchian"
-          subtitle="h.tootoonchian@gmail.com"
-        />
-      ),
-      role: <Typography>{t("user.admin")}</Typography>,
-      country: <Typography>{t("user.iran")}</Typography>,
-      status: <ListLabel label={t("status.deactive")} color="danger" />,
-      joinedDate: <Typography>10-2-2020</Typography>,
-    },
-  ];
+
   const tableActions = [
     {
       label: t("app.edit"),
@@ -268,30 +167,102 @@ const UsersList = () => {
     },
     {
       label: t("app.delete"),
-      onClick: () => console.log("ok!"),
+      onClick: (e: any) => {
+        setSelectedItem([e.id]);
+        setOpenDeleteDialog(true);
+      },
     },
   ];
   const handleChangeRole = (event: SelectChangeEvent) => {
     setSelectedRole(event.target.value as string);
+    setPage(0);
+    Dispatch(
+      getUsersList({
+        role: event.target.value,
+        search: search,
+        country: selectedCountry,
+        status: selectedStatus,
+        page: 0,
+      })
+    );
   };
   const handleChangeStatus = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value as string);
+    setPage(0);
+    Dispatch(
+      getUsersList({
+        role: selectedRole,
+        search: search,
+        country: selectedCountry,
+        status: event.target.value,
+        page: 0,
+      })
+    );
   };
   const handleChangeCountry = (event: SelectChangeEvent) => {
     setSelectedCountry(event.target.value as string);
+    setPage(0);
+    Dispatch(
+      getUsersList({
+        role: selectedRole,
+        search: search,
+        country: event.target.value,
+        status: selectedStatus,
+        page: 0,
+      })
+    );
   };
   const handleSelectRows = (items: number[]) => {
     setSelectedRows([...items]);
   };
+
+  const handleConfirmDelete = () => {
+    setSelectedItem([...selectedRows]);
+    setOpenDeleteDialog(true);
+  };
+  const handleDelete = () => {
+    if (selectedItem.length === 1) {
+      Dispatch(deleteUser(selectedItem[0]));
+    } else if (selectedItem.length > 1) {
+      selectedItem.map((item: number) => {
+        Dispatch(deleteUser(item));
+      });
+    }
+  };
+  const handleCreateUser = () => {
+    console.log("ok");
+  };
+
   return (
     <ListLayout>
+      {
+        <ConfirmDeleteDialog
+          open={openDeleteDialog}
+          title={
+            selectedItem.length > 1
+              ? `really want to delete ${selectedItem.length} users?`
+              : `really want to delete this user?`
+          }
+          setOpen={setOpenDeleteDialog}
+          handleSubmit={handleDelete}
+        />
+      }
       <ListHeader
         deleteMode={selectedRows.length > 0}
         selectedItems={selectedRows.length}
-        handleClick={() => console.log("ok")}
+        handleClick={
+          selectedRows.length > 0 ? handleConfirmDelete : handleCreateUser
+        }
         label={"add user"}
       >
-        <ListHeaderSearch placeholder={"Search In Users"} />
+        <ListHeaderSearch
+          value={search}
+          handleChange={(e) => {
+            setSearch(e.target.value);
+            debouncedFunction(e);
+          }}
+          placeholder={"Search In Users"}
+        />
         <div className={styles.dropdownContainer}>
           <Dropdown
             items={rolesList?.map((role) => ({
@@ -330,12 +301,36 @@ const UsersList = () => {
         </div>
       </ListHeader>
       <div className={styles.tableContainer}>
-        <Table
-          handleSelectRows={handleSelectRows}
-          thead={tableHead}
-          tbody={usersTable}
-          actions={tableActions}
-        />
+        <InfiniteScroll
+          dataLength={usersList?.data?.length || 0}
+          next={() => {
+            setPage(page + 1);
+            Dispatch(
+              getUsersList({
+                role: selectedRole,
+                search: search,
+                country: selectedCountry,
+                status: selectedStatus,
+                page: page + 1,
+              })
+            );
+          }}
+          hasMore={
+            usersList
+              ? usersList?.current_page < usersList?.last_page
+                ? true
+                : false
+              : false
+          }
+          loader={<p style={{ textAlign: "center" }}>Loading...</p>}
+        >
+          <Table
+            handleSelectRows={handleSelectRows}
+            thead={tableHead}
+            tbody={usersTable}
+            actions={tableActions}
+          />
+        </InfiniteScroll>
       </div>
     </ListLayout>
   );

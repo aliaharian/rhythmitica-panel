@@ -6,7 +6,7 @@ import { tableActionModel } from "../../../app/models/table";
 import styles from "../../../assets/scss/molecules/popupMenu.module.scss";
 import Icon from "../../atoms/Icon";
 
-const PopupMenu = ({ open, setOpen, items , color }: PopupMenuModel) => {
+const PopupMenu = ({ open, setOpen, items , color , rowItem}: PopupMenuModel) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClose = () => {
     setOpen(false);
@@ -18,7 +18,7 @@ const PopupMenu = ({ open, setOpen, items , color }: PopupMenuModel) => {
   };
   const handleClickItem = (item: tableActionModel) => {
     if (item.onClick) {
-      item.onClick();
+      item.onClick(rowItem);
     }
     handleClose();
   };

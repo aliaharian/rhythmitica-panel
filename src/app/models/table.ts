@@ -8,7 +8,7 @@ export interface tableModel {
 
 export interface tableActionModel {
   label: string;
-  onClick?: () => void;
+  onClick?: (e:any) => void;
 }
 export interface tableHeadModel {
   label: any;

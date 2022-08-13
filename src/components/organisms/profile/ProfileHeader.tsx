@@ -53,7 +53,8 @@ const ProfileHeader = () => {
               open={actionsOpen}
               setOpen={(e) => setActionsOpen(e)}
               items={actions}
-              color = 'main'
+              color="main"
+              rowItem={null}
             />
           </div>
         </div>

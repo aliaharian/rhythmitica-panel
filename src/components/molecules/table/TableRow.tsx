@@ -30,6 +30,7 @@ const TableRow = ({
             open={actionsOpen}
             setOpen={(e) => setActionsOpen(e)}
             items={actions}
+            rowItem={tb}
           />
         </td>
       )}

@@ -20,6 +20,7 @@ export interface menuItem {
 export interface PopupMenuModel {
   items: tableActionModel[];
   open: boolean;
-  setOpen: (open:boolean) => void;
+  setOpen: (open: boolean) => void;
   color?: string;
+  rowItem: any;
 }

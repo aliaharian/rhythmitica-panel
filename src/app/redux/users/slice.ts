@@ -25,7 +25,13 @@ const userSlice = createSlice({
       state.rolesList = action.payload;
     },
     getUsersList: (state, action: PayloadAction<usersResponseModel>) => {
-      state.usersListResponse = action.payload;
+      state.usersListResponse =
+        action.payload.current_page > 1 && state.usersListResponse
+          ? {
+              ...action.payload,
+              data: [...state.usersListResponse.data, ...action.payload.data],
+            }
+          : action.payload;
     },
     getCountriesList: (state, action: PayloadAction<countryModel[]>) => {
       state.countriesList = action.payload;
