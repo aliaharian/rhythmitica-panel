@@ -1,25 +1,27 @@
 import {
+  blogSliceModel,
   countryModel,
   roleModel,
   userModel,
   usersSliceModel,
 } from "../../models/redux-models";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { usersResponseModel } from "@/app/models/user";
 
-const initialUserState: usersSliceModel = {
-  userInfo: undefined,
-  rolesList: undefined,
-  countriesList: undefined,
-  usersListResponse: undefined,
+const initialBlogState: blogSliceModel = {
+  blogCategories: undefined,
+  createPostResponse: undefined,
 };
 
 const blogSlice = createSlice({
   name: "blog",
-  initialState: initialUserState,
+  initialState: initialBlogState,
   reducers: {
-    getBlogCategories: (state, action: PayloadAction<userModel>) => {
-      state.userInfo = action.payload;
+    getBlogCategories: (state, action: PayloadAction<any[]>) => {
+      state.blogCategories = action.payload;
+    },
+    createPost: (state, action: PayloadAction<any>) => {
+      state.createPostResponse = action.payload;
+      window.location.href = "/";
     },
   },
 });

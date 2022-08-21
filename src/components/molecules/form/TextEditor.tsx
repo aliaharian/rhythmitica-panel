@@ -1,7 +1,8 @@
+import { TextEditorModel } from "@/app/models/form";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
 
-const TextEditor = () => {
+const TextEditor = ({ onChange, value }: TextEditorModel) => {
   const editorRef = useRef<any>(null);
 
   return (
@@ -10,6 +11,8 @@ const TextEditor = () => {
         apiKey="ajj87dt2tkk9iay286x5uxdjdb685g4spq516y5lacgqlerz"
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue=""
+        value={value}
+        onEditorChange={onChange}
         init={{
           height: 510,
           menubar: false,

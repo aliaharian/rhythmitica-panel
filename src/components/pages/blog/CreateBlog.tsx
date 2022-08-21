@@ -11,31 +11,44 @@ import Checkbox from "@/components/molecules/form/Checkbox";
 import RhButton from "@/components/molecules/form/RhButton";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { useEffect } from "react";
-import { getBlogCategories } from "@/app/redux/blog/actions";
+import { createPost, getBlogCategories } from "@/app/redux/blog/actions";
 
 const CreateBlog = () => {
   const { t } = useTranslation();
   const blogCategories = useAppSelector((state) => state.blog.blogCategories);
-  const Dispatch = useAppDispatch()
+  const Dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       title: "",
       brief: "",
       selectedCategory: undefined,
       draft: false,
+      body: "",
+      banner: null,
     },
     onSubmit: (values) => {
       console.log(values);
+      if (values.selectedCategory) {
+        Dispatch(createPost(values));
+      }
     },
   });
-  useEffect(()=>{
-    !blogCategories && Dispatch(getBlogCategories())
-  },[])
+  useEffect(() => {
+    !blogCategories && Dispatch(getBlogCategories());
+  }, []);
+
   const handleChangeCategory = (event: SelectChangeEvent<string>) => {
     formik.setFieldValue("selectedCategory", event.target.value);
   };
   const handleChangeDraft = () => {
     formik.setFieldValue("draft", !formik.values.draft);
+  };
+  const handleChangeBody = (newValue: any) => {
+    formik.setFieldValue("body", newValue);
+  };
+  const onChangeImage = (image: any) => {
+    console.log(image);
+    formik.setFieldValue("banner", image);
   };
   return (
     <InnerPageLayout breadcrumb={["blog", "create post"]}>
@@ -43,23 +56,17 @@ const CreateBlog = () => {
         <div className={styles.addBlogContainer}>
           <div className={styles.blogInfoContainer}>
             <div className={styles.dropzoneContainer}>
-              <Dropzone />
+              <Dropzone onChange={onChangeImage} />
             </div>
             <div className={styles.titleContainer}>
               <Input formik={formik} name="title" label={t("blog.title")} />
             </div>
             <div className={styles.titleContainer}>
               <Dropdown
-                items={[
-                  {
-                    label: "education",
-                    value: "education",
-                  },
-                  {
-                    label: "news",
-                    value: "news",
-                  },
-                ]}
+                items={blogCategories?.map((cat) => ({
+                  label: cat.title,
+                  value: cat.id,
+                }))}
                 value={formik.values.selectedCategory}
                 handleChange={handleChangeCategory}
                 label={t("blog.category")}
@@ -83,7 +90,10 @@ const CreateBlog = () => {
             </div>
           </div>
           <div className={styles.textEditorContainer}>
-            <TextEditor />
+            <TextEditor
+              onChange={handleChangeBody}
+              value={formik?.values?.body}
+            />
           </div>
         </div>
         <div className={styles.submitContainer}>

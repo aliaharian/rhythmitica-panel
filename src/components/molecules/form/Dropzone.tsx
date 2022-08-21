@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import styles from "@scss/molecules/dropzone.module.scss";
 import ImageSample from "@icons/ImageSample";
 import Icon from "@/components/atoms/Icon";
+import { DropzoneModel } from "@/app/models/form";
 
-const Dropzone = () => {
+const Dropzone = ({ onChange }: DropzoneModel) => {
   const dropzoneRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -38,6 +39,7 @@ const Dropzone = () => {
     const files = e?.dataTransfer?.files || [];
     if (dropzoneRef.current) {
       setCurrentFiles(files);
+      onChange(files);
       var fr = new FileReader();
       fr.onload = function () {
         if (imageRef.current) {
@@ -63,6 +65,7 @@ const Dropzone = () => {
   const handleClick = () => {
     if (currentFiles) {
       setCurrentFiles(null);
+      onChange(null);
     } else {
       if (inputRef.current) {
         inputRef.current.click();
@@ -73,6 +76,8 @@ const Dropzone = () => {
     const files = e.target.files || [];
     if (files.length > 0) {
       setCurrentFiles(files);
+      onChange(files);
+
       var fr = new FileReader();
       fr.onload = function () {
         if (imageRef.current) {

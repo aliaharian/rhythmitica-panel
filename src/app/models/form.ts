@@ -14,6 +14,15 @@ export interface DropdownItem {
   label: string;
   value: string;
 }
+export interface TextEditorModel {
+  onChange?: (newValue: any) => void;
+  value?:any;
+}
+
+export interface DropzoneModel {
+  onChange: (newValue?: any | undefined) => void;
+  value?:any;
+}
 
 export interface ButtonModel {
   label?: string;

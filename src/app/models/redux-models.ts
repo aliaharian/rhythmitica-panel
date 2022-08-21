@@ -36,6 +36,10 @@ export interface usersSliceModel {
   countriesList?: countryModel[];
   usersListResponse?: any;
 }
+export interface blogSliceModel {
+  blogCategories?: any[];
+  createPostResponse?:any;
+}
 export interface usersSliceModel {
   userInfo?: userModel;
   rolesList?: roleModel[];
