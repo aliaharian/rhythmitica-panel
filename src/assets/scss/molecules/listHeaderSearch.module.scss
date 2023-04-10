@@ -1,0 +1,28 @@
+@import "../global.scss";
+
+.searchInput {
+  width: 201px;
+  height: 38px;
+  background-color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px 10px 12px;
+  overflow: hidden;
+  border-radius: 8px;
+
+  & input {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    height: 100%;
+    width: calc(100% - 30px);
+    color:var(--main-text-color);
+  }
+}
+
+.icon {
+  transform: rotateZ(90deg);
+  color: var(--icon-color);
+  font-size: 22px;
+}

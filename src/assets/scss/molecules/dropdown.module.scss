@@ -1,0 +1,116 @@
+@import "../global.scss";
+
+.dropdownContainer {
+  width: 100%;
+  height: 38px;
+  border-radius: inherit;
+  border-color: inherit;
+
+  & > div {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    border-radius: inherit;
+    border-color: inherit;
+
+    & > div {
+      height: 100%;
+      border-radius: inherit;
+      border-color: inherit;
+      & svg {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        fill: currentColor;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 7px;
+        top: calc(50% - 0.5em);
+        pointer-events: none;
+        color: rgba(0, 0, 0, 0.54);
+      }
+      & > div {
+        font-size: 16px;
+        color: var(--main-text-color);
+        text-transform: capitalize;
+        padding-left: 12px;
+
+        & .inputValue {
+          font-size: 14px;
+          color: var(--secondary-text-color);
+          text-transform: capitalize;
+          margin-right: 8px;
+        }
+      }
+    }
+
+    & fieldset {
+      border-radius: inherit;
+      border-color: inherit !important;
+      border-width: 1px !important;
+    }
+  }
+}
+.buttonMode {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  border: none;
+  & fieldset {
+    border: none !important;
+  }
+  & > div {
+    & > div {
+      & > div {
+        padding: 10px 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .inputValue {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+.formMode {
+  border-radius: 8px;
+  height: 42px;
+  [class~="Mui-focused"] {
+    border-color: var(--dark-main-color) !important;
+  }
+  border-color: var(--main-bg-color) !important;
+  & label {
+    font-size: 14px;
+    color: var(--secondary-text-color) !important;
+    // top: -5px;
+  }
+  & input {
+    height: 42px;
+  }
+  & > div {
+    & > div {
+      & > div {
+        height: 42px;
+        padding: 0 14px;
+      }
+    }
+  }
+}
+.dropdownMenu {
+  border-radius: 8px !important;
+
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 10%),
+    0px 8px 10px 1px rgb(0 0 0 / 5%) !important;
+  [class~="Mui-selected"] {
+    background-color: var(--light-main-color) !important;
+  }
+}

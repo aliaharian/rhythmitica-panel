@@ -1,0 +1,24 @@
+@import "../global.scss";
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & .avatarContainer {
+    margin-right: 23px;
+  }
+  & .usernameContainer {
+    & > p {
+      &:nth-child(1) {
+        margin-bottom: 31px;
+        color: var(--main-text-color);
+        font-size: 18px;
+      }
+      &:nth-child(2) {
+        color: var(--icon-color);
+        font-size: 16px;
+        
+      }
+    }
+  }
+}

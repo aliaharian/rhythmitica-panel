@@ -1,0 +1,54 @@
+@import "../global.scss";
+
+.tableContainer {
+  width: 100%;
+  & .table {
+    width: 100%;
+    & > thead {
+      display: flex;
+      padding-bottom: 33px;
+      border-bottom: 1px solid var(--main-bg-color);
+      & > tr {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        width:100%;
+        & > th {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: row;
+          text-transform: uppercase;
+          color: var(--icon-color);
+          font-family: var(--font-medium);
+          font-size: 14px;
+        }
+      }
+    }
+    & > tbody {
+      display: flex;
+      flex-direction: column;
+      & > tr {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        border-bottom: 1px solid var(--main-bg-color);
+        &:last-child {
+          border-bottom: none;
+        }
+        & > td {
+          padding: 11px 0;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: row;
+          font-size: 14px;
+          color: var(--icon-color);
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "../global.scss";
+
+.formContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 217px calc(100% - 217px);
+  margin-bottom: 43px;
+}
+
+.sectionTitle{
+  margin-top:10px;
+  &>p{
+    font-size: 16px;
+    color:var(--dark-main-color);
+    display: flex;
+    align-items: center;
+    &:before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius: 50%;
+      background-color: var(--dark-main-color);
+      display: block;
+      margin-right:12px;
+    }
+  }
+}

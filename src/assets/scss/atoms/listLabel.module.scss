@@ -1,0 +1,43 @@
+@import "../global.scss";
+
+.listLabel {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px 11px 11px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  & > div {
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+  }
+  & > p {
+    font-size: 11px;
+    text-transform: capitalize;
+    margin-left:10px;
+  }
+}
+
+.labelSuccess {
+  border-color: var(--success-color);
+  background-color: var(--success-bg-color);
+  & > p {
+    color: var(--success-color);
+  }
+  & > div {
+    background-color: var(--success-color);
+  }
+}
+
+.labelDanger{
+  border-color: var(--danger-color);
+  background-color: var(--danger-bg-color);
+  & > p {
+    color: var(--danger-color);
+  }
+  & > div {
+    background-color: var(--danger-color);
+  }
+}

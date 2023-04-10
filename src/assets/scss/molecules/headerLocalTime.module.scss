@@ -1,0 +1,16 @@
+@import "../global.scss";
+.localtime{
+    width:94px !important;
+    height:36px !important;
+    background-color: var(--light-main-color) !important;
+    color: var(--dark-main-color) !important;
+    border:1px solid var(--dark-main-color) !important;
+    border-radius: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    &>p{
+        color:var(--dark-main-color);
+        font-size: 18px;
+    }
+}

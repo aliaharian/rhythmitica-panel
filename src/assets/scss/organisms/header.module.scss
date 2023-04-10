@@ -1,0 +1,44 @@
+@import "../global.scss";
+
+.header {
+  width: 100%;
+  height: 78px;
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--main-bg-color);
+  position: sticky;
+  top:0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right:24px;
+  z-index: 999;
+}
+.localtimeContainer{
+  display: flex;
+  align-items: center;
+  justify-self: flex-start;
+  & .countryName{
+    font-size: 13px;
+    color:var(--main-text-color);
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-right:10px;
+    &:before{
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--dark-main-color);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right:10px;
+    }
+  }
+}
+
+.actionsContainer{
+  display: flex;
+  align-items: center;
+  height:100%;
+  
+}

@@ -1,0 +1,19 @@
+@import "../global.scss";
+
+.dropdownContainer {
+  width: 170px;
+  margin-left: 20px;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  border-color: transparent;
+}
+.countryDropdown {
+  width: 201px;
+}
+
+.tableContainer{
+  padding:30px 40px;
+}
+.tableHeadText{
+  font-family: inherit !important;
+}

@@ -1,0 +1,31 @@
+@import "../global.scss";
+
+.tabs {
+  position: relative;
+  width: 100%;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--tabs-line);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+  [class~="MuiTabs-indicator"] {
+    z-index: 4;
+    height: 3px;
+    background-color: var(--dark-main-color);
+    border-radius: 8px;
+  }
+  [class~="Mui-selected"] {
+    color: var(--dark-main-color) !important;
+  }
+  [class~="MuiTab-textColorPrimary"] {
+    color: var(--secondary-text-color) ;
+    text-transform: capitalize;
+  }
+  
+}
